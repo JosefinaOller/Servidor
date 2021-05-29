@@ -24,29 +24,38 @@ public class Servidor implements Runnable {
 		
 	}
 	
-	private void recibirEmpleado() {
+	private void recibirEmpleado0() {
 		 new Thread() {
 	            public void run() {
 	                try {
 	                	
-	                    ServerSocket serverEmpleado = new ServerSocket(1230); //serverSocket de empleado
+	                    ServerSocket serverEmpleado = new ServerSocket(1230); //serverSocket de empleado con el box 0
+	                   
 	                    while (true) {
 
-	                        Socket socketEmpleado = serverEmpleado.accept();
+	                        Socket socketEmpleado= serverEmpleado.accept();
+	                  
+	                        
 	                        
 	                        PrintWriter outEmpleado = new PrintWriter(socketEmpleado.getOutputStream(), true);	                      
 	                        BufferedReader inEmpleado = new BufferedReader(new InputStreamReader(socketEmpleado.getInputStream()));
-
-	                        String empleado=null;
+	                        
+	                        
+	                        
+	                        String empleado=null; 
 	                            
 	                        empleado=inEmpleado.readLine();
 	                        int box=Integer.parseInt(empleado);
 	                        
+	                      
+	                        
 	                        if(listaUsuarios.size()==0) { //no hay clientes esperando
 	            	        	outEmpleado.println(0);
+	            	        	
 	            	        }
 	            	        else {
 	            	        	outEmpleado.println(listaUsuarios.get(0));
+	            	        	
 	            	        	enviarTelevisor(box,listaUsuarios.get(0)); //le mando el box
 	            	        	listaUsuarios.remove(0);
 	            	        }                        	
@@ -54,6 +63,218 @@ public class Servidor implements Runnable {
 	                        
 	                    }
                                                                                                                                                                                              
+
+	                } catch (Exception e) {
+	                	JOptionPane.showMessageDialog(null,"ERROR COMUNICACION 1.SERVIDOR", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+	                    System.out.println("1.SERVIDOR");
+	                    e.printStackTrace();
+	                    
+	                }
+	        
+	            }
+
+				
+	        }.start();
+	}
+	
+	private void recibirEmpleado1() {
+		 new Thread() {
+	            public void run() {
+	                try {
+	                	
+	                    ServerSocket serverEmpleado = new ServerSocket(1231); //serverSocket de empleado con el box 1
+	                   
+	                    while (true) {
+
+	                        Socket socketEmpleado= serverEmpleado.accept();
+	                  
+	                        
+	                        
+	                        PrintWriter outEmpleado = new PrintWriter(socketEmpleado.getOutputStream(), true);	                      
+	                        BufferedReader inEmpleado = new BufferedReader(new InputStreamReader(socketEmpleado.getInputStream()));
+	                        
+	                        
+	                        
+	                        String empleado=null; 
+	                            
+	                        empleado=inEmpleado.readLine();
+	                        int box=Integer.parseInt(empleado);
+	                        
+	                      
+	                        
+	                        if(listaUsuarios.size()==0) { //no hay clientes esperando
+	            	        	outEmpleado.println(0);
+	            	        	
+	            	        }
+	            	        else {
+	            	        	outEmpleado.println(listaUsuarios.get(0));
+	            	        	
+	            	        	enviarTelevisor(box,listaUsuarios.get(0)); //le mando el box
+	            	        	listaUsuarios.remove(0);
+	            	        }                        	
+	                       
+	                        
+	                    }
+                                                                                                                                                                                            
+
+	                } catch (Exception e) {
+	                	JOptionPane.showMessageDialog(null,"ERROR COMUNICACION 1.SERVIDOR", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+	                    System.out.println("1.SERVIDOR");
+	                    e.printStackTrace();
+	                    
+	                }
+	        
+	            }
+
+				
+	        }.start();
+	}
+	
+	private void recibirEmpleado2() {
+		 new Thread() {
+	            public void run() {
+	                try {
+	                	
+	                    ServerSocket serverEmpleado = new ServerSocket(1232); //serverSocket de empleado con el box 2
+	                   
+	                    while (true) {
+
+	                        Socket socketEmpleado= serverEmpleado.accept();
+	                  
+	                        
+	                        
+	                        PrintWriter outEmpleado = new PrintWriter(socketEmpleado.getOutputStream(), true);	                      
+	                        BufferedReader inEmpleado = new BufferedReader(new InputStreamReader(socketEmpleado.getInputStream()));
+	                        
+	                        
+	                        
+	                        String empleado=null; 
+	                            
+	                        empleado=inEmpleado.readLine();
+	                        int box=Integer.parseInt(empleado);
+	                        
+	                      
+	                        
+	                        if(listaUsuarios.size()==0) { //no hay clientes esperando
+	            	        	outEmpleado.println(0);
+	            	        	
+	            	        }
+	            	        else {
+	            	        	outEmpleado.println(listaUsuarios.get(0));
+	            	        	
+	            	        	enviarTelevisor(box,listaUsuarios.get(0)); //le mando el box
+	            	        	listaUsuarios.remove(0);
+	            	        }                        	
+	                       
+	                        
+	                    }
+                                                                                                                                                                                            
+
+	                } catch (Exception e) {
+	                	JOptionPane.showMessageDialog(null,"ERROR COMUNICACION 1.SERVIDOR", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+	                    System.out.println("1.SERVIDOR");
+	                    e.printStackTrace();
+	                    
+	                }
+	        
+	            }
+
+				
+	        }.start();
+	}
+	
+	private void recibirEmpleado3() {
+		 new Thread() {
+	            public void run() {
+	                try {
+	                	
+	                    ServerSocket serverEmpleado = new ServerSocket(1233); //serverSocket de empleado con el box 3
+	                   
+	                    while (true) {
+
+	                        Socket socketEmpleado= serverEmpleado.accept();
+	                  
+	                        
+	                        
+	                        PrintWriter outEmpleado = new PrintWriter(socketEmpleado.getOutputStream(), true);	                      
+	                        BufferedReader inEmpleado = new BufferedReader(new InputStreamReader(socketEmpleado.getInputStream()));
+	                        
+	                        
+	                        
+	                        String empleado=null; 
+	                            
+	                        empleado=inEmpleado.readLine();
+	                        int box=Integer.parseInt(empleado);
+	                        
+	                      
+	                        
+	                        if(listaUsuarios.size()==0) { //no hay clientes esperando
+	            	        	outEmpleado.println(0);
+	            	        	
+	            	        }
+	            	        else {
+	            	        	outEmpleado.println(listaUsuarios.get(0));
+	            	        	
+	            	        	enviarTelevisor(box,listaUsuarios.get(0)); //le mando el box
+	            	        	listaUsuarios.remove(0);
+	            	        }                        	
+	                       
+	                        
+	                    }
+                                                                                                                                                                                            
+
+	                } catch (Exception e) {
+	                	JOptionPane.showMessageDialog(null,"ERROR COMUNICACION 1.SERVIDOR", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+	                    System.out.println("1.SERVIDOR");
+	                    e.printStackTrace();
+	                    
+	                }
+	        
+	            }
+
+				
+	        }.start();
+	}
+	
+	private void recibirEmpleado4() {
+		 new Thread() {
+	            public void run() {
+	                try {
+	                	
+	                    ServerSocket serverEmpleado = new ServerSocket(1234); //serverSocket de empleado con el box 4
+	                   
+	                    while (true) {
+
+	                        Socket socketEmpleado= serverEmpleado.accept();
+	                  
+	                        
+	                        
+	                        PrintWriter outEmpleado = new PrintWriter(socketEmpleado.getOutputStream(), true);	                      
+	                        BufferedReader inEmpleado = new BufferedReader(new InputStreamReader(socketEmpleado.getInputStream()));
+	                        
+	                        
+	                        
+	                        String empleado=null; 
+	                            
+	                        empleado=inEmpleado.readLine();
+	                        int box=Integer.parseInt(empleado);
+	                        
+	                      
+	                        
+	                        if(listaUsuarios.size()==0) { //no hay clientes esperando
+	            	        	outEmpleado.println(0);
+	            	        	
+	            	        }
+	            	        else {
+	            	        	outEmpleado.println(listaUsuarios.get(0));
+	            	        	
+	            	        	enviarTelevisor(box,listaUsuarios.get(0)); //le mando el box
+	            	        	listaUsuarios.remove(0);
+	            	        }                        	
+	                       
+	                        
+	                    }
+                                                                                                                                                                                            
 
 	                } catch (Exception e) {
 	                	JOptionPane.showMessageDialog(null,"ERROR COMUNICACION 1.SERVIDOR", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
@@ -90,12 +311,12 @@ public class Servidor implements Runnable {
 	}
 	
 	
-	private void recibirTotem() {
+	private void recibirTotem0() {
 		 new Thread() {
 	            public void run() {
 	                try {
 	                	
-	                    ServerSocket serverTotem= new ServerSocket(1236); //serverSocket de totem
+	                    ServerSocket serverTotem= new ServerSocket(1240); //serverSocket de totem
 
 	                    while (true) {
 
@@ -104,8 +325,6 @@ public class Servidor implements Runnable {
 	                        String msg = inTotem.readLine();
 	                        String documento=msg;
 	                        agregarUsuario(documento);
-	                        System.out.println("Documento agregado: "+ documento);
-	                        
 	                    }
                        
 
@@ -123,6 +342,67 @@ public class Servidor implements Runnable {
 	        }.start();
 	}
 	
+	private void recibirTotem1() {
+		 new Thread() {
+	            public void run() {
+	                try {
+	                	
+	                    ServerSocket serverTotem= new ServerSocket(1241); //serverSocket de totem
+
+	                    while (true) {
+
+	                        Socket socketTotem = serverTotem.accept();
+	                        BufferedReader inTotem = new BufferedReader(new InputStreamReader(socketTotem.getInputStream()));	                        
+	                        String msg = inTotem.readLine();
+	                        String documento=msg;
+	                        agregarUsuario(documento);
+	                    }
+                      
+
+
+	                } catch (Exception e) {
+	                	JOptionPane.showMessageDialog(null,"ERROR COMUNICACION 1.SERVIDOR", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+	                    System.out.println("1.SERVIDOR");
+	                    e.printStackTrace();
+	                    
+	                }
+	        
+	            }
+
+				
+	        }.start();
+	}
+	
+	private void recibirTotem2() {
+		 new Thread() {
+	            public void run() {
+	                try {
+	                	
+	                    ServerSocket serverTotem= new ServerSocket(1242); //serverSocket de totem
+
+	                    while (true) {
+
+	                        Socket socketTotem = serverTotem.accept();
+	                        BufferedReader inTotem = new BufferedReader(new InputStreamReader(socketTotem.getInputStream()));	                        
+	                        String msg = inTotem.readLine();
+	                        String documento=msg;
+	                        agregarUsuario(documento);
+	                    }
+                      
+
+
+	                } catch (Exception e) {
+	                	JOptionPane.showMessageDialog(null,"ERROR COMUNICACION 1.SERVIDOR", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+	                    System.out.println("1.SERVIDOR");
+	                    e.printStackTrace();
+	                    
+	                }
+	        
+	            }
+
+				
+	        }.start();
+	}
 	protected void agregarUsuario(String documento) {
 		this.listaUsuarios.add(documento);
 		
@@ -140,8 +420,14 @@ public class Servidor implements Runnable {
 	
 	public static void main(String[] args) {
 		Servidor s= new Servidor();
-		s.recibirEmpleado();
-		s.recibirTotem();
+		s.recibirEmpleado0();
+		s.recibirEmpleado1();
+		s.recibirEmpleado2();
+		s.recibirEmpleado3();
+		s.recibirEmpleado4();
+		s.recibirTotem0();
+		s.recibirTotem1();
+		s.recibirTotem2();
 	}
 
 	@Override
