@@ -20,9 +20,17 @@ public class Servidor implements I_Registro {
 	public Servidor(ArrayList<String> listaUsuarios) {
 		super();
 		this.listaUsuarios = listaUsuarios;
+		recibirEmpleado0();
+		recibirEmpleado1();
+		recibirEmpleado2();
+		recibirEmpleado3();
+		recibirEmpleado4();
+		recibirTotem0();
+		recibirTotem1();
+		recibirTotem2();
 	}
 
-	public void recibirEmpleado0() throws Exception{
+	public void recibirEmpleado0(){
 		 new Thread() {
 	            public void run() {
 	                try {
@@ -53,8 +61,6 @@ public class Servidor implements I_Registro {
                                                                                                                                                                                              
 
 	                } catch (Exception e) {
-	                	//JOptionPane.showMessageDialog(null,"ERROR COMUNICACION 1.SERVIDOR", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
-	                    //System.out.println("1.SERVIDOR");
 	                    e.printStackTrace();
 	                    
 	                }
@@ -65,7 +71,7 @@ public class Servidor implements I_Registro {
 	        }.start();
 	}
 	
-	public void recibirEmpleado1() throws Exception {
+	public void recibirEmpleado1()  {
 		 new Thread() {
 	            public void run() {
 	                try {
@@ -106,8 +112,6 @@ public class Servidor implements I_Registro {
                                                                                                                                                                                             
 
 	                } catch (Exception e) {
-	                	//JOptionPane.showMessageDialog(null,"ERROR COMUNICACION 1.SERVIDOR", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
-	                    //System.out.println("1.SERVIDOR");
 	                    e.printStackTrace();
 	                    
 	                }
@@ -118,7 +122,7 @@ public class Servidor implements I_Registro {
 	        }.start();
 	}
 	
-	public void recibirEmpleado2() throws Exception {
+	public void recibirEmpleado2()  {
 		 new Thread() {
 	            public void run() {
 	                try {
@@ -159,8 +163,7 @@ public class Servidor implements I_Registro {
                                                                                                                                                                                             
 
 	                } catch (Exception e) {
-	                	//JOptionPane.showMessageDialog(null,"ERROR COMUNICACION 1.SERVIDOR", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
-	                    //System.out.println("1.SERVIDOR");
+	                	
 	                    e.printStackTrace();
 	                    
 	                }
@@ -171,7 +174,7 @@ public class Servidor implements I_Registro {
 	        }.start();
 	}
 	
-	public void recibirEmpleado3() throws Exception {
+	public void recibirEmpleado3()  {
 		 new Thread() {
 	            public void run() {
 	                try {
@@ -212,8 +215,7 @@ public class Servidor implements I_Registro {
                                                                                                                                                                                             
 
 	                } catch (Exception e) {
-	                	//JOptionPane.showMessageDialog(null,"ERROR COMUNICACION 1.SERVIDOR", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
-	                    //System.out.println("1.SERVIDOR");
+	                	
 	                    e.printStackTrace();
 	                    
 	                }
@@ -224,7 +226,7 @@ public class Servidor implements I_Registro {
 	        }.start();
 	}
 	
-	public void recibirEmpleado4() throws Exception {
+	public void recibirEmpleado4()  {
 		 new Thread() {
 	            public void run() {
 	                try {
@@ -262,8 +264,7 @@ public class Servidor implements I_Registro {
                                                                                                                                                                                             
 
 	                } catch (Exception e) {
-	                	//JOptionPane.showMessageDialog(null,"ERROR COMUNICACION 1.SERVIDOR", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
-	                    //System.out.println("1.SERVIDOR");
+	                	
 	                    e.printStackTrace();
 	                    
 	                }
@@ -275,7 +276,7 @@ public class Servidor implements I_Registro {
 	}
 	
 	
-	public void enviarTelevisor(int box, String documento) throws Exception {
+	public void enviarTelevisor(int box, String documento)  {
 		 try {
          	
 			Socket socketTelevisor = new Socket(InetAddress.getLocalHost().getHostAddress(),1235);
@@ -288,15 +289,14 @@ public class Servidor implements I_Registro {
  	        outTelevisor.close();
 
          } catch (Exception e) {
-         	//JOptionPane.showMessageDialog(null,"ERROR COMUNICACION 1. Televisor - Servidor", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
-            // System.out.println("1.SERVIDOR");
+         	
              e.printStackTrace();
              
          }
 	}
 	
 	
-	public void recibirTotem0() throws Exception {
+	public void recibirTotem0()  {
 		 new Thread() {
 	            public void run() {
 	                try {
@@ -324,7 +324,7 @@ public class Servidor implements I_Registro {
 	        }.start();
 	}
 	
-	public void recibirTotem1() throws Exception {
+	public void recibirTotem1()  {
 		 new Thread() {
 	            public void run() {
 	                try {
@@ -341,8 +341,7 @@ public class Servidor implements I_Registro {
 	                    }
                       
 	                } catch (Exception e) {
-	                	//JOptionPane.showMessageDialog(null,"ERROR COMUNICACION 1.SERVIDOR", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
-	                   // System.out.println("1.SERVIDOR");
+	                	
 	                    e.printStackTrace();
 	                    
 	                }
@@ -353,7 +352,7 @@ public class Servidor implements I_Registro {
 	        }.start();
 	}
 	
-	public void recibirTotem2() throws Exception {
+	public void recibirTotem2() {
 		 new Thread() {
 	            public void run() {
 	                try {
@@ -370,8 +369,7 @@ public class Servidor implements I_Registro {
 	                    }
                       
 	                } catch (Exception e) {
-	                	//JOptionPane.showMessageDialog(null,"ERROR COMUNICACION 1.SERVIDOR", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
-	                    //System.out.println("1.SERVIDOR");
+	                	
 	                    e.printStackTrace();
 	                    
 	                }

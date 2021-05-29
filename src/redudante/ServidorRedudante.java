@@ -21,7 +21,7 @@ private ArrayList <String> listaUsuarios;
 		this.listaUsuarios = listaUsuarios;
 	}
 
-	public void recibirEmpleado0() throws Exception{
+	public void recibirEmpleado0() {
 		 new Thread() {
 	            public void run() {
 	                try {
@@ -64,7 +64,7 @@ private ArrayList <String> listaUsuarios;
 	        }.start();
 	}
 	
-	public void recibirEmpleado1() throws Exception {
+	public void recibirEmpleado1()  {
 		 new Thread() {
 	            public void run() {
 	                try {
@@ -117,7 +117,7 @@ private ArrayList <String> listaUsuarios;
 	        }.start();
 	}
 	
-	public void recibirEmpleado2() throws Exception {
+	public void recibirEmpleado2() {
 		 new Thread() {
 	            public void run() {
 	                try {
@@ -170,7 +170,7 @@ private ArrayList <String> listaUsuarios;
 	        }.start();
 	}
 	
-	public void recibirEmpleado3() throws Exception {
+	public void recibirEmpleado3()  {
 		 new Thread() {
 	            public void run() {
 	                try {
@@ -223,7 +223,7 @@ private ArrayList <String> listaUsuarios;
 	        }.start();
 	}
 	
-	public void recibirEmpleado4() throws Exception {
+	public void recibirEmpleado4()  {
 		 new Thread() {
 	            public void run() {
 	                try {
@@ -274,7 +274,7 @@ private ArrayList <String> listaUsuarios;
 	}
 	
 	
-	public void enviarTelevisor(int box, String documento) throws Exception {
+	public void enviarTelevisor(int box, String documento)  {
 		 try {
         	
 			Socket socketTelevisor = new Socket(InetAddress.getLocalHost().getHostAddress(),1435);
@@ -295,7 +295,7 @@ private ArrayList <String> listaUsuarios;
 	}
 	
 	
-	public void recibirTotem0() throws Exception {
+	public void recibirTotem0()  {
 		 new Thread() {
 	            public void run() {
 	                try {
@@ -323,7 +323,7 @@ private ArrayList <String> listaUsuarios;
 	        }.start();
 	}
 	
-	public void recibirTotem1() throws Exception {
+	public void recibirTotem1()  {
 		 new Thread() {
 	            public void run() {
 	                try {
@@ -352,7 +352,7 @@ private ArrayList <String> listaUsuarios;
 	        }.start();
 	}
 	
-	public void recibirTotem2() throws Exception {
+	public void recibirTotem2() {
 		 new Thread() {
 	            public void run() {
 	                try {
@@ -399,6 +399,19 @@ private ArrayList <String> listaUsuarios;
 	@Override
 	public String primerUsuario() {
 		return this.listaUsuarios.get(0);
+	}
+
+	public void activar() {
+		//aca deberia recibir la informacion de la lista de clientes
+		recibirEmpleado0();
+		recibirEmpleado1();
+		recibirEmpleado2();
+		recibirEmpleado3();
+		recibirEmpleado4();
+		recibirTotem0();
+		recibirTotem1();
+		recibirTotem2();
+		
 	}
 	
 }
