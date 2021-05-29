@@ -1,63 +1,51 @@
-package modelo;
+package original;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.InetAddress;
-import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.UnknownHostException;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
+import interfaces.I_Registro;
 
-public class Servidor implements Runnable {
+
+public class Servidor implements I_Registro {
 	
-	private ArrayList <String> listaUsuarios=null;
+	private ArrayList <String> listaUsuarios;
 	
-	public Servidor() {
+	public Servidor(ArrayList<String> listaUsuarios) {
 		super();
-		this.listaUsuarios = new ArrayList<String>();
-		
+		this.listaUsuarios = listaUsuarios;
 	}
-	
-	private void recibirEmpleado0() {
+
+	public void recibirEmpleado0() throws Exception{
 		 new Thread() {
 	            public void run() {
 	                try {
-	                	
 	                    ServerSocket serverEmpleado = new ServerSocket(1230); //serverSocket de empleado con el box 0
-	                   
 	                    while (true) {
 
 	                        Socket socketEmpleado= serverEmpleado.accept();
-	                  
-	                        
-	                        
+	                                                             
 	                        PrintWriter outEmpleado = new PrintWriter(socketEmpleado.getOutputStream(), true);	                      
 	                        BufferedReader inEmpleado = new BufferedReader(new InputStreamReader(socketEmpleado.getInputStream()));
-	                        
-	                        
-	                        
 	                        String empleado=null; 
 	                            
 	                        empleado=inEmpleado.readLine();
 	                        int box=Integer.parseInt(empleado);
-	                        
-	                      
-	                        
 	                        if(listaUsuarios.size()==0) { //no hay clientes esperando
 	            	        	outEmpleado.println(0);
 	            	        	
 	            	        }
 	            	        else {
-	            	        	outEmpleado.println(listaUsuarios.get(0));
+	            	        	outEmpleado.println(primerUsuario());
 	            	        	
-	            	        	enviarTelevisor(box,listaUsuarios.get(0)); //le mando el box
-	            	        	listaUsuarios.remove(0);
+	            	        	enviarTelevisor(box,primerUsuario()); //le mando el box
+	            	        	eliminarUsuario();
 	            	        }                        	
 	                       
 	                        
@@ -65,8 +53,8 @@ public class Servidor implements Runnable {
                                                                                                                                                                                              
 
 	                } catch (Exception e) {
-	                	JOptionPane.showMessageDialog(null,"ERROR COMUNICACION 1.SERVIDOR", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
-	                    System.out.println("1.SERVIDOR");
+	                	//JOptionPane.showMessageDialog(null,"ERROR COMUNICACION 1.SERVIDOR", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+	                    //System.out.println("1.SERVIDOR");
 	                    e.printStackTrace();
 	                    
 	                }
@@ -77,7 +65,7 @@ public class Servidor implements Runnable {
 	        }.start();
 	}
 	
-	private void recibirEmpleado1() {
+	public void recibirEmpleado1() throws Exception {
 		 new Thread() {
 	            public void run() {
 	                try {
@@ -107,10 +95,10 @@ public class Servidor implements Runnable {
 	            	        	
 	            	        }
 	            	        else {
-	            	        	outEmpleado.println(listaUsuarios.get(0));
+	            	        	outEmpleado.println(primerUsuario());
 	            	        	
-	            	        	enviarTelevisor(box,listaUsuarios.get(0)); //le mando el box
-	            	        	listaUsuarios.remove(0);
+	            	        	enviarTelevisor(box,primerUsuario()); //le mando el box
+	            	        	eliminarUsuario();
 	            	        }                        	
 	                       
 	                        
@@ -118,8 +106,8 @@ public class Servidor implements Runnable {
                                                                                                                                                                                             
 
 	                } catch (Exception e) {
-	                	JOptionPane.showMessageDialog(null,"ERROR COMUNICACION 1.SERVIDOR", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
-	                    System.out.println("1.SERVIDOR");
+	                	//JOptionPane.showMessageDialog(null,"ERROR COMUNICACION 1.SERVIDOR", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+	                    //System.out.println("1.SERVIDOR");
 	                    e.printStackTrace();
 	                    
 	                }
@@ -130,7 +118,7 @@ public class Servidor implements Runnable {
 	        }.start();
 	}
 	
-	private void recibirEmpleado2() {
+	public void recibirEmpleado2() throws Exception {
 		 new Thread() {
 	            public void run() {
 	                try {
@@ -160,10 +148,10 @@ public class Servidor implements Runnable {
 	            	        	
 	            	        }
 	            	        else {
-	            	        	outEmpleado.println(listaUsuarios.get(0));
+	            	        	outEmpleado.println(primerUsuario());
 	            	        	
-	            	        	enviarTelevisor(box,listaUsuarios.get(0)); //le mando el box
-	            	        	listaUsuarios.remove(0);
+	            	        	enviarTelevisor(box,primerUsuario()); //le mando el box
+	            	        	eliminarUsuario();
 	            	        }                        	
 	                       
 	                        
@@ -171,8 +159,8 @@ public class Servidor implements Runnable {
                                                                                                                                                                                             
 
 	                } catch (Exception e) {
-	                	JOptionPane.showMessageDialog(null,"ERROR COMUNICACION 1.SERVIDOR", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
-	                    System.out.println("1.SERVIDOR");
+	                	//JOptionPane.showMessageDialog(null,"ERROR COMUNICACION 1.SERVIDOR", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+	                    //System.out.println("1.SERVIDOR");
 	                    e.printStackTrace();
 	                    
 	                }
@@ -183,7 +171,7 @@ public class Servidor implements Runnable {
 	        }.start();
 	}
 	
-	private void recibirEmpleado3() {
+	public void recibirEmpleado3() throws Exception {
 		 new Thread() {
 	            public void run() {
 	                try {
@@ -213,10 +201,10 @@ public class Servidor implements Runnable {
 	            	        	
 	            	        }
 	            	        else {
-	            	        	outEmpleado.println(listaUsuarios.get(0));
+	            	        	outEmpleado.println(primerUsuario());
 	            	        	
-	            	        	enviarTelevisor(box,listaUsuarios.get(0)); //le mando el box
-	            	        	listaUsuarios.remove(0);
+	            	        	enviarTelevisor(box,primerUsuario()); //le mando el box
+	            	        	eliminarUsuario();
 	            	        }                        	
 	                       
 	                        
@@ -224,8 +212,8 @@ public class Servidor implements Runnable {
                                                                                                                                                                                             
 
 	                } catch (Exception e) {
-	                	JOptionPane.showMessageDialog(null,"ERROR COMUNICACION 1.SERVIDOR", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
-	                    System.out.println("1.SERVIDOR");
+	                	//JOptionPane.showMessageDialog(null,"ERROR COMUNICACION 1.SERVIDOR", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+	                    //System.out.println("1.SERVIDOR");
 	                    e.printStackTrace();
 	                    
 	                }
@@ -236,7 +224,7 @@ public class Servidor implements Runnable {
 	        }.start();
 	}
 	
-	private void recibirEmpleado4() {
+	public void recibirEmpleado4() throws Exception {
 		 new Thread() {
 	            public void run() {
 	                try {
@@ -258,18 +246,15 @@ public class Servidor implements Runnable {
 	                            
 	                        empleado=inEmpleado.readLine();
 	                        int box=Integer.parseInt(empleado);
-	                        
-	                      
-	                        
 	                        if(listaUsuarios.size()==0) { //no hay clientes esperando
 	            	        	outEmpleado.println(0);
 	            	        	
 	            	        }
 	            	        else {
-	            	        	outEmpleado.println(listaUsuarios.get(0));
-	            	        	
-	            	        	enviarTelevisor(box,listaUsuarios.get(0)); //le mando el box
-	            	        	listaUsuarios.remove(0);
+	            	        	outEmpleado.println(primerUsuario());
+	            	        	enviarTelevisor(box,primerUsuario()); //le mando el box
+	            	        	eliminarUsuario();
+	            	        
 	            	        }                        	
 	                       
 	                        
@@ -277,8 +262,8 @@ public class Servidor implements Runnable {
                                                                                                                                                                                             
 
 	                } catch (Exception e) {
-	                	JOptionPane.showMessageDialog(null,"ERROR COMUNICACION 1.SERVIDOR", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
-	                    System.out.println("1.SERVIDOR");
+	                	//JOptionPane.showMessageDialog(null,"ERROR COMUNICACION 1.SERVIDOR", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+	                    //System.out.println("1.SERVIDOR");
 	                    e.printStackTrace();
 	                    
 	                }
@@ -290,7 +275,7 @@ public class Servidor implements Runnable {
 	}
 	
 	
-	public void enviarTelevisor(int box, String documento) {
+	public void enviarTelevisor(int box, String documento) throws Exception {
 		 try {
          	
 			Socket socketTelevisor = new Socket(InetAddress.getLocalHost().getHostAddress(),1235);
@@ -303,15 +288,15 @@ public class Servidor implements Runnable {
  	        outTelevisor.close();
 
          } catch (Exception e) {
-         	JOptionPane.showMessageDialog(null,"ERROR COMUNICACION 1. Televisor - Servidor", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
-             System.out.println("1.SERVIDOR");
+         	//JOptionPane.showMessageDialog(null,"ERROR COMUNICACION 1. Televisor - Servidor", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+            // System.out.println("1.SERVIDOR");
              e.printStackTrace();
              
          }
 	}
 	
 	
-	private void recibirTotem0() {
+	public void recibirTotem0() throws Exception {
 		 new Thread() {
 	            public void run() {
 	                try {
@@ -327,22 +312,19 @@ public class Servidor implements Runnable {
 	                        agregarUsuario(documento);
 	                    }
                        
-
-
 	                } catch (Exception e) {
 	                	JOptionPane.showMessageDialog(null,"ERROR COMUNICACION 1.SERVIDOR", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
-	                    System.out.println("1.SERVIDOR");
-	                    e.printStackTrace();
+	                    //System.out.println("1.SERVIDOR");
+	                    //e.printStackTrace();
 	                    
 	                }
 	        
 	            }
-
 				
 	        }.start();
 	}
 	
-	private void recibirTotem1() {
+	public void recibirTotem1() throws Exception {
 		 new Thread() {
 	            public void run() {
 	                try {
@@ -358,11 +340,9 @@ public class Servidor implements Runnable {
 	                        agregarUsuario(documento);
 	                    }
                       
-
-
 	                } catch (Exception e) {
-	                	JOptionPane.showMessageDialog(null,"ERROR COMUNICACION 1.SERVIDOR", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
-	                    System.out.println("1.SERVIDOR");
+	                	//JOptionPane.showMessageDialog(null,"ERROR COMUNICACION 1.SERVIDOR", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+	                   // System.out.println("1.SERVIDOR");
 	                    e.printStackTrace();
 	                    
 	                }
@@ -373,7 +353,7 @@ public class Servidor implements Runnable {
 	        }.start();
 	}
 	
-	private void recibirTotem2() {
+	public void recibirTotem2() throws Exception {
 		 new Thread() {
 	            public void run() {
 	                try {
@@ -389,26 +369,19 @@ public class Servidor implements Runnable {
 	                        agregarUsuario(documento);
 	                    }
                       
-
-
 	                } catch (Exception e) {
-	                	JOptionPane.showMessageDialog(null,"ERROR COMUNICACION 1.SERVIDOR", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
-	                    System.out.println("1.SERVIDOR");
+	                	//JOptionPane.showMessageDialog(null,"ERROR COMUNICACION 1.SERVIDOR", "ADVERTENCIA", JOptionPane.WARNING_MESSAGE);
+	                    //System.out.println("1.SERVIDOR");
 	                    e.printStackTrace();
 	                    
 	                }
-	        
-	            }
-
-				
+	            }	
 	        }.start();
 	}
-	protected void agregarUsuario(String documento) {
+	public void agregarUsuario(String documento) {
 		this.listaUsuarios.add(documento);
 		
 	}
-
-
 
 	public ArrayList<String> getListaUsuarios() {
 		return listaUsuarios;
@@ -418,22 +391,15 @@ public class Servidor implements Runnable {
 		this.listaUsuarios = listaUsuarios;
 	}
 	
-	public static void main(String[] args) {
-		Servidor s= new Servidor();
-		s.recibirEmpleado0();
-		s.recibirEmpleado1();
-		s.recibirEmpleado2();
-		s.recibirEmpleado3();
-		s.recibirEmpleado4();
-		s.recibirTotem0();
-		s.recibirTotem1();
-		s.recibirTotem2();
+	@Override
+	public void eliminarUsuario() {
+		this.listaUsuarios.remove(0);
+		
 	}
 
 	@Override
-	public void run() {
-		// TODO Auto-generated method stub
-		
+	public String primerUsuario() {
+		return this.listaUsuarios.get(0);
 	}
 	
 }
