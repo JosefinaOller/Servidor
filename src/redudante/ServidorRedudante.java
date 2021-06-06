@@ -11,14 +11,18 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import interfaces.I_Registro;
+import monitoreo.ErroresServerRedudante;
+import monitoreo.MonitoreoServerRedudante;
+import original.Servidor;
 
 public class ServidorRedudante implements I_Registro {
 	
-private ArrayList <String> listaUsuarios;
+private ArrayList <String> listaUsuarios=null;
+private int activo=0;
 	
-	public ServidorRedudante(ArrayList<String> listaUsuarios) {
+	public ServidorRedudante() {
 		super();
-		this.listaUsuarios = listaUsuarios;
+		this.listaUsuarios = new ArrayList<String>();
 	}
 
 	public void recibirEmpleado0() {
@@ -305,6 +309,7 @@ private ArrayList <String> listaUsuarios;
 	                    while (true) {
 
 	                        Socket socketTotem = serverTotem.accept();
+	                        System.out.println("Escuchando a Totem..");
 	                        BufferedReader inTotem = new BufferedReader(new InputStreamReader(socketTotem.getInputStream()));	                        
 	                        String msg = inTotem.readLine();
 	                        String documento=msg;
@@ -402,16 +407,26 @@ private ArrayList <String> listaUsuarios;
 	}
 
 	public void activar() {
-		//aca deberia recibir la informacion de la lista de clientes
-		recibirEmpleado0();
-		recibirEmpleado1();
-		recibirEmpleado2();
-		recibirEmpleado3();
-		recibirEmpleado4();
-		recibirTotem0();
-		recibirTotem1();
-		recibirTotem2();
+			if(activo==0) {
+				recibirEmpleado0();
+				recibirEmpleado1();
+				recibirEmpleado2();
+				recibirEmpleado3();
+				recibirEmpleado4();
+				recibirTotem0();
+				recibirTotem1();
+				recibirTotem2();
+				activo=1;
+			}
+			
 		
+	}
+	
+	public static void main(String[] args) {
+		ServidorRedudante s= new ServidorRedudante();
+		MonitoreoServerRedudante m= new MonitoreoServerRedudante();
+		ErroresServerRedudante e= new ErroresServerRedudante();
+		s.activar();
 	}
 	
 }

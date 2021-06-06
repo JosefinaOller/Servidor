@@ -17,7 +17,7 @@ public class ErroresServerRedudante {
 		new Thread() {
             public void run() {
                 try {
-                    ServerSocket server = new ServerSocket(2050); //serverSocket de ServidorRedudante desde el monitor
+                    ServerSocket server = new ServerSocket(5000); //serverSocket de ServidorRedudante desde el monitor
                     while (true) {
 
                         Socket socket= server.accept();
@@ -25,7 +25,8 @@ public class ErroresServerRedudante {
                         String aviso=null; 
                         aviso=in.readLine();
                         if(aviso.equals("activar")) {
-                        	servidorRedudante.activar();
+                        	System.out.println("Activando el servidor redundante...");
+                        	activar();
                         }
 
                     }
@@ -39,6 +40,11 @@ public class ErroresServerRedudante {
             }
 	
         }.start();
+	}
+
+	protected void activar() {
+		servidorRedudante.activar();
+		
 	}
 
 }

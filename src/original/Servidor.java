@@ -11,15 +11,20 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import interfaces.I_Registro;
+import monitoreo.ErroresServerOriginal;
+import monitoreo.ErroresServerRedudante;
+import monitoreo.MonitoreoServerOriginal;
+import monitoreo.MonitoreoServerRedudante;
+import redudante.ServidorRedudante;
 
 
 public class Servidor implements I_Registro {
 	
-	private ArrayList <String> listaUsuarios;
+	private ArrayList <String> listaUsuarios=null;
 	
-	public Servidor(ArrayList<String> listaUsuarios) {
+	public Servidor() {
 		super();
-		this.listaUsuarios = listaUsuarios;
+		this.listaUsuarios = new ArrayList<String>();
 		recibirEmpleado0();
 		recibirEmpleado1();
 		recibirEmpleado2();
@@ -398,6 +403,12 @@ public class Servidor implements I_Registro {
 	@Override
 	public String primerUsuario() {
 		return this.listaUsuarios.get(0);
+	}
+	
+	public static void main(String[] args) {
+		Servidor s= new Servidor();
+		MonitoreoServerOriginal m= new MonitoreoServerOriginal();
+		ErroresServerOriginal e= new ErroresServerOriginal();
 	}
 	
 }
