@@ -12,7 +12,9 @@ import redudante.ServidorRedudante;
 public class ErroresServerRedudante {
 	
 	private ServidorRedudante servidorRedudante;
-	
+	public ErroresServerRedudante() {
+		recibirError();
+	}
 	public void recibirError() {
 		new Thread() {
             public void run() {
